@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "RTEMapViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:screenBounds];
+    
+    RTEMapViewController *mapViewController = [[RTEMapViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:mapViewController];    
+    self.window.rootViewController = navController;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
