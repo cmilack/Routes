@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="bottomLayoutConstraint" destination="rMV-5V-bo9" id="hzc-ax-lqD"/>
                 <outlet property="bottomToolbar" destination="vSG-EP-D98" id="E3Z-LF-dfK"/>
+                <outlet property="gpsButton" destination="ffG-XM-nqH" id="gxt-7a-iYi"/>
                 <outlet property="mapView" destination="0GU-00-HJb" id="gSE-Ir-c15"/>
                 <outlet property="view" destination="iN0-l3-epB" id="h4S-9D-7kr"/>
             </connections>
@@ -25,7 +26,11 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSG-EP-D98">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <items>
-                        <barButtonItem systemItem="play" id="ffG-XM-nqH"/>
+                        <barButtonItem image="GPS_Off" style="plain" id="ffG-XM-nqH">
+                            <connections>
+                                <action selector="didTapGPSButton:" destination="-1" id="0EI-V8-Nr5"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="scg-W4-byB"/>
                         <barButtonItem title="Item" style="plain" systemItem="organize" id="J2K-nA-1Op"/>
                     </items>
@@ -44,4 +49,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="GPS_Off" width="26" height="25"/>
+    </resources>
 </document>
