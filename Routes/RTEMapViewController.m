@@ -167,7 +167,7 @@
         return;
     }
 
-    self.gpsButton.tintColor = [UIColor blueColor];
+    self.gpsButton.tintColor = [UIColor greenColor];
     switch (self.mapView.userTrackingMode) {
         case MGLUserTrackingModeNone:
             self.gpsButton.image = [UIImage imageNamed:@"GPS_Off"];

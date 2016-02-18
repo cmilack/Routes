@@ -32,7 +32,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="scg-W4-byB"/>
-                        <barButtonItem title="Item" style="plain" systemItem="organize" id="J2K-nA-1Op"/>
+                        <barButtonItem image="Details" style="plain" id="J2K-nA-1Op"/>
                     </items>
                 </toolbar>
             </subviews>
@@ -50,6 +50,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Details" width="26" height="26"/>
         <image name="GPS_Off" width="26" height="25"/>
     </resources>
 </document>
