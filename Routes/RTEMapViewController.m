@@ -14,8 +14,11 @@
 
 @property (nonatomic,weak) IBOutlet MGLMapView *mapView;
 
+// Bottom Bar Outlets
+//
 @property (nonatomic,weak) IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
 @property (nonatomic,weak) IBOutlet UIToolbar *bottomToolbar;
+@property (nonatomic,weak) IBOutlet UIBarButtonItem *gpsButton;
 
 // A flag to ignore user interaction from tapping. Our tap gesture recognizer will
 // wire up a delayed selector giving the mapView:didSelectAnnotation: an opportunit
@@ -27,7 +30,24 @@
 
 @implementation RTEMapViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        
+        CLLocationManager *lm = [[CLLocationManager alloc] init];
+        [lm requestAlwaysAuthorization];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [self.mapView removeObserver:self forKeyPath:NSStringFromSelector(@selector(userTrackingMode))];
+}
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
   
     UITapGestureRecognizer *gr =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMap:)];
@@ -37,6 +57,8 @@
     [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(40.7326808, -73.9843407)
                        zoomLevel:12
                         animated:NO];
+    
+    [self.mapView showsUserLocation];
     
     // Set up the rest of our UI
     // Search bar
@@ -52,12 +74,27 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                            target:nil
                                                                                            action:nil];
+    
+    // Set up KVO properties
+    //
+    [self.mapView addObserver:self
+                   forKeyPath:NSStringFromSelector(@selector(userTrackingMode))
+                      options:0
+                      context:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *,id> *)change
+                       context:(void *)context
+{
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(userTrackingMode))]) {
+        
+        [self updateGPSButtonStyle];
+    }
 }
+
+#pragma mark - UI Actions
 
 - (void)didTapMap:(id)sender
 {
@@ -75,6 +112,54 @@
         self.ignoreTap = NO;
     });
 }
+
+- (IBAction)didTapGPSButton:(UIBarButtonItem *)sender
+{
+    if (!self.mapView.isUserLocationVisible) {
+        self.mapView.showsUserLocation = YES;
+    }
+    
+    switch (self.mapView.userTrackingMode) {
+        case MGLUserTrackingModeNone:
+            self.mapView.userTrackingMode = MGLUserTrackingModeFollow;
+            break;
+        case MGLUserTrackingModeFollow:
+            self.mapView.userTrackingMode = MGLUserTrackingModeFollowWithCourse;
+            break;
+        case MGLUserTrackingModeFollowWithCourse:
+            self.mapView.showsUserLocation = NO;
+            self.mapView.userTrackingMode = MGLUserTrackingModeNone;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)updateGPSButtonStyle
+{
+    if (!self.mapView.showsUserLocation) {
+        self.gpsButton.tintColor = [UIColor whiteColor];
+        self.gpsButton.image = [UIImage imageNamed:@"GPS_Off"];
+        return;
+    }
+
+    self.gpsButton.tintColor = [UIColor blueColor];
+    switch (self.mapView.userTrackingMode) {
+        case MGLUserTrackingModeNone:
+            self.gpsButton.image = [UIImage imageNamed:@"GPS_Off"];
+            break;
+        case MGLUserTrackingModeFollow:
+            self.gpsButton.image = [UIImage imageNamed:@"GPS_On"];
+            break;
+        case MGLUserTrackingModeFollowWithCourse:
+            self.gpsButton.image = [UIImage imageNamed:@"Navigation"];
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - Toolbar Toggles
 
 - (void)toggleNavigationBars
 {
