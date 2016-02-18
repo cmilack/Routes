@@ -8,12 +8,22 @@
 
 #import "RTEMapViewController.h"
 #import <Mapbox/Mapbox.h>
-#import "UINavigationController+RTEExtensions.h"
 
-@interface RTEMapViewController ()<MGLMapViewDelegate>
+#import "RTESearchResultsViewController.h"
+
+#import "UINavigationController+RTEExtensions.h"
+#import "UIView+RTEAutolayout.h"
+
+@interface RTEMapViewController ()<MGLMapViewDelegate, UISearchBarDelegate,RTESearchResultViewControllerDelegate>
 
 @property (nonatomic,weak) IBOutlet MGLMapView *mapView;
 
+// Top Navigation Bar
+//
+@property (nonatomic,weak) UISearchBar *searchBar;
+
+// Bottom Toolbar
+//
 @property (nonatomic,weak) IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
 @property (nonatomic,weak) IBOutlet UIToolbar *bottomToolbar;
 
@@ -43,8 +53,23 @@
     // navigation items
     //
     
-    self.navigationItem.titleView = [[UISearchBar alloc] init];
+    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    searchBar.placeholder = @"Search for place or address";
+    searchBar.delegate = self;
     
+    self.searchBar = searchBar;
+    self.navigationItem.titleView = searchBar;
+    
+    [self addDefaultSideNavigationItems];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)addDefaultSideNavigationItems
+{
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                                           target:nil
                                                                                           action:nil];
@@ -52,11 +77,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                            target:nil
                                                                                            action:nil];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)didTapMap:(id)sender
@@ -87,17 +107,35 @@
 
 - (void)toggleBottomBar
 {
-    double newBottomConstraintConstant;
     if (self.bottomLayoutConstraint.constant < 0) {
-        newBottomConstraintConstant = 0;
+        [self showBottomBar];
     } else {
-        newBottomConstraintConstant = - CGRectGetHeight(self.bottomToolbar.frame);
+        [self hideBottomBar];
     }
+}
+
+- (void)showBottomBar
+{
+    // TODO: Check if already visible
+    //
     
     [self.bottomToolbar layoutIfNeeded];
     [UIView animateWithDuration:.25 animations:^{
-       
-        self.bottomLayoutConstraint.constant = newBottomConstraintConstant;
+        
+        self.bottomLayoutConstraint.constant = 0;
+        [self.bottomToolbar layoutIfNeeded];
+    }];
+}
+
+- (void)hideBottomBar
+{
+    // TODO: Check if already hidden
+    //
+    
+    [self.bottomToolbar layoutIfNeeded];
+    [UIView animateWithDuration:.25 animations:^{
+        
+        self.bottomLayoutConstraint.constant = - CGRectGetHeight(self.bottomToolbar.frame);
         [self.bottomToolbar layoutIfNeeded];
     }];
 }
@@ -109,6 +147,58 @@
     // Set flag to ignore default user tap behavior
     //
     self.ignoreTap = YES;
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [self hideBottomBar];
+    
+    // Add the search result view controller on top of our map content
+    //
+    RTESearchResultsViewController *searchResultsVC = [[RTESearchResultsViewController alloc] init];
+    searchResultsVC.delegate = self;
+    [self addChildViewController:searchResultsVC];
+    
+    // Set up fade-in animation for new vc (to match apples maps app)
+    //
+    searchResultsVC.view.alpha = 0.0;
+    [self.view addSubview:searchResultsVC.view];
+    [UIView animateWithDuration:.25 animations:^{
+        
+        searchResultsVC.view.alpha = 1.0;
+    }];
+    
+    
+    [searchResultsVC.view rte_fitInSuperViewFromTop:self.topLayoutGuide.length left:0 right:0 bottom:0];
+}
+
+#pragma mark - RTESearchResultsViewControllerDelegate
+
+- (void)searchResultsViewControllerDidCancel:(RTESearchResultsViewController *)viewController
+{
+    [self.searchBar resignFirstResponder];
+    
+    // Animate the search results view out and then remove it completely
+    // We animate the bottom bar in at the same time
+    //
+    [self showBottomBar];
+    [UIView animateWithDuration:.25 animations:^{
+        viewController.view.alpha = 0.0;
+    } completion:^(BOOL finished) {
+
+        [viewController.view removeFromSuperview];
+        [viewController removeFromParentViewController];
+    }];
+    
+    // Reestablish ownership of the search bar via it's delegate
+    //
+    self.searchBar.delegate = self;
+    
+    // Update left and right bar button items
+    //
+    [self addDefaultSideNavigationItems];
 }
 
 @end
