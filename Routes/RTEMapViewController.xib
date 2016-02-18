@@ -25,7 +25,9 @@
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSG-EP-D98">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <items>
-                        <barButtonItem title="Item" id="ffG-XM-nqH"/>
+                        <barButtonItem systemItem="play" id="ffG-XM-nqH"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="scg-W4-byB"/>
+                        <barButtonItem title="Item" style="plain" systemItem="organize" id="J2K-nA-1Op"/>
                     </items>
                 </toolbar>
             </subviews>

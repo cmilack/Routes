@@ -27,6 +27,10 @@
     
     [self.window makeKeyAndVisible];
     
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor darkGrayColor]];
+    [[UIToolbar appearance] setBarTintColor:[UIColor darkGrayColor]];
+    
     return YES;
 }
 

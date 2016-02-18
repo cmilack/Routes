@@ -37,6 +37,21 @@
     [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(40.7326808, -73.9843407)
                        zoomLevel:12
                         animated:NO];
+    
+    // Set up the rest of our UI
+    // Search bar
+    // navigation items
+    //
+    
+    self.navigationItem.titleView = [[UISearchBar alloc] init];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                          target:nil
+                                                                                          action:nil];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                           target:nil
+                                                                                           action:nil];
 }
 
 - (void)didReceiveMemoryWarning {
