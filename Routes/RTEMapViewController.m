@@ -45,7 +45,7 @@
     if (self) {
         
         CLLocationManager *lm = [[CLLocationManager alloc] init];
-        [lm requestAlwaysAuthorization];
+        [lm requestWhenInUseAuthorization];
     }
     return self;
 }
