@@ -230,8 +230,7 @@
 }
 
 #pragma mark - MGLMapViewDelegate
-
-- (void)mapView:(MGLMapView *)mapView didSelectAnnotation:(id <MGLAnnotation>)annotation
+ - (void)mapView:(MGLMapView *)mapView didSelectAnnotation:(id <MGLAnnotation>)annotation
 {
     // Set flag to ignore default user tap behavior
     //
@@ -246,7 +245,7 @@
     
     // Add the search result view controller on top of our map content
     //
-    RTESearchResultsViewController *searchResultsVC = [[RTESearchResultsViewController alloc] init];
+    RTESearchResultsViewController *searchResultsVC = [[RTESearchResultsViewController alloc] initWithSearchBar:searchBar];
     searchResultsVC.delegate = self;
     [self addChildViewController:searchResultsVC];
     

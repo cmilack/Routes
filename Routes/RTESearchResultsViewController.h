@@ -19,6 +19,8 @@
 
 @interface RTESearchResultsViewController : UITableViewController<UISearchBarDelegate>
 
+- (instancetype)initWithSearchBar:(UISearchBar *)searchBar;
+
 @property (nonatomic,weak) id<RTESearchResultViewControllerDelegate> delegate;
 
 @end
