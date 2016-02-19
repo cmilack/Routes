@@ -9,6 +9,7 @@
 #import "RTEMapViewController.h"
 #import <Mapbox/Mapbox.h>
 
+#import "RTEGeocodeResult.h"
 #import "RTESearchResultsViewController.h"
 
 #import "UINavigationController+RTEExtensions.h"
@@ -267,7 +268,7 @@
 - (void)searchResultsViewController:(RTESearchResultsViewController *)viewController
                     didSelectResult:(RTEGeocodeResult *)result
 {
-
+    [self.mapView setVisibleCoordinateBounds:result.boundingBox animated:YES];
     [self dismissSearchResultsController:viewController];
 }
 

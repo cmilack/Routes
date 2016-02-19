@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Mapbox/Mapbox.h>
 
 @class MGLPolygon;
 @class MGLShape;
@@ -18,11 +19,12 @@
 @interface RTEGeocodeResult : NSObject
 
 @property (nonatomic) CLLocationCoordinate2D center;
+@property (nonatomic) MGLCoordinateBounds boundingBox;
+
 @property (nonatomic,copy) NSString *text;
 @property (nonatomic,copy) NSString *placeName;
 @property (nonatomic,copy) NSString *featureId;
 
-// TODO:  @property (nonatomic) MGLPolygon *boundingBox;
 // TODO: @property (nonatomic) MGLShape *geometry;
 
 - (instancetype)initWithDictionary:(NSDictionary *)json;

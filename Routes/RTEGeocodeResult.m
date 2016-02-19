@@ -30,6 +30,18 @@
     self.text = [json objectForKey:@"text"];
     self.placeName = [json objectForKey:@"place_name"];
     self.featureId = [json objectForKey:@"id"];
+    
+    NSArray *bboxCoordinates = [json objectForKey:@"bbox"];
+    double swLon = [[bboxCoordinates objectAtIndex:0] doubleValue];
+    double swLat = [[bboxCoordinates objectAtIndex:1] doubleValue];
+    double neLon = [[bboxCoordinates objectAtIndex:2] doubleValue];
+    double neLat = [[bboxCoordinates objectAtIndex:3] doubleValue];
+    
+    CLLocationCoordinate2D sw = CLLocationCoordinate2DMake(swLat,swLon);
+    CLLocationCoordinate2D ne = CLLocationCoordinate2DMake(neLat,neLon);
+    
+    self.boundingBox = MGLCoordinateBoundsMake(sw,ne);
+
 }
 
 @end
