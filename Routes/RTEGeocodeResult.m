@@ -22,8 +22,8 @@
 - (void)loadFromJson:(NSDictionary *)json
 {
     NSArray *centerCoordinates = [json objectForKey:@"center"];
-    NSNumber *longitude = centerCoordinates.firstObject;
-    NSNumber *latitude = centerCoordinates.lastObject;
+    NSNumber *latitude = centerCoordinates.firstObject;
+    NSNumber *longitude = centerCoordinates.lastObject;
     
     self.center = CLLocationCoordinate2DMake(longitude.doubleValue, latitude.doubleValue);
     

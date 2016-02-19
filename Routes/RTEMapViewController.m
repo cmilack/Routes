@@ -60,8 +60,10 @@
     
     [super viewDidLoad];
   
-    UITapGestureRecognizer *gr =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMap:)];
-    [self.mapView addGestureRecognizer:gr];
+    self.mapView.delegate = self;
+    
+//    UITapGestureRecognizer *gr =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapMap:)];
+//    [self.mapView addGestureRecognizer:gr];
 
     // set the map's center coordinates and zoom level
     [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(40.7326808, -73.9843407)
@@ -238,6 +240,11 @@
     self.ignoreTap = YES;
 }
 
+- (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id<MGLAnnotation>)annotation
+{
+    return YES;
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -268,7 +275,19 @@
 - (void)searchResultsViewController:(RTESearchResultsViewController *)viewController
                     didSelectResult:(RTEGeocodeResult *)result
 {
+    // Zoom to the bounding box of the result
+    //
     [self.mapView setVisibleCoordinateBounds:result.boundingBox animated:YES];
+    
+    // Add an annotation to the result center point
+    //
+    MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
+    annotation.coordinate = result.center;
+    annotation.title = result.text;
+    annotation.subtitle = @"Welcome to my marker";
+    
+    [self.mapView addAnnotation:annotation];
+    
     [self dismissSearchResultsController:viewController];
 }
 
