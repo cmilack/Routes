@@ -8,13 +8,13 @@
 
 #import "AppDelegate.h"
 #import "RTEMapViewController.h"
+#import "RTEMapboxClientHelper.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
@@ -30,6 +30,8 @@
     [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:[UIColor darkGrayColor]];
     [[UIToolbar appearance] setBarTintColor:[UIColor darkGrayColor]];
+    
+    [RTEMapboxClientHelper registerClientToken:@"pk.eyJ1IjoiY21pbGFjayIsImEiOiJtdUxlQmlNIn0.bDID_agbnwa76H5oWf7idQ"];
     
     return YES;
 }

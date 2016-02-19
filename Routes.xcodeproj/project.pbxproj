@@ -10,9 +10,14 @@
 		17265C8A1C7554E700F2C9A3 /* RTEMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17265C891C7554E700F2C9A3 /* RTEMapViewController.m */; };
 		17265C8D1C7558E800F2C9A3 /* UINavigationController+RTEExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17265C8C1C7558E800F2C9A3 /* UINavigationController+RTEExtensions.m */; };
 		17265C901C755C4100F2C9A3 /* RTEMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17265C8F1C755C4100F2C9A3 /* RTEMapViewController.xib */; };
+		17265C931C76178E00F2C9A3 /* RTESearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17265C921C76178E00F2C9A3 /* RTESearchResultsViewController.m */; };
+		17265C961C761BDD00F2C9A3 /* UIView+RTEAutolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 17265C951C761BDD00F2C9A3 /* UIView+RTEAutolayout.m */; };
+		17265C9A1C762E9000F2C9A3 /* RTEGeocodeTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 17265C991C762E9000F2C9A3 /* RTEGeocodeTask.m */; };
+		17265C9D1C76319E00F2C9A3 /* RTEForwardGeocodeParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 17265C9C1C76319E00F2C9A3 /* RTEForwardGeocodeParameters.m */; };
+		17460FE81C767E6C00CD159C /* RTEMapboxClientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 17460FE71C767E6C00CD159C /* RTEMapboxClientHelper.m */; };
+		17460FF11C76BDA900CD159C /* RTEGeocodeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 17460FF01C76BDA900CD159C /* RTEGeocodeResult.m */; };
 		17D685481C754F9000207661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D685471C754F9000207661 /* main.m */; };
 		17D6854B1C754F9000207661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6854A1C754F9000207661 /* AppDelegate.m */; };
-		17D685511C754F9000207661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D6854F1C754F9000207661 /* Main.storyboard */; };
 		17D685531C754F9000207661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D685521C754F9000207661 /* Assets.xcassets */; };
 		17D685561C754F9000207661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17D685541C754F9000207661 /* LaunchScreen.storyboard */; };
 		EC32574A57B94353BDC66541 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D6EA39D529EADD1648F8BF /* Pods.framework */; };
@@ -25,11 +30,23 @@
 		17265C8B1C7558E800F2C9A3 /* UINavigationController+RTEExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+RTEExtensions.h"; sourceTree = "<group>"; };
 		17265C8C1C7558E800F2C9A3 /* UINavigationController+RTEExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+RTEExtensions.m"; sourceTree = "<group>"; };
 		17265C8F1C755C4100F2C9A3 /* RTEMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTEMapViewController.xib; sourceTree = "<group>"; };
+		17265C911C76178E00F2C9A3 /* RTESearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTESearchResultsViewController.h; sourceTree = "<group>"; };
+		17265C921C76178E00F2C9A3 /* RTESearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTESearchResultsViewController.m; sourceTree = "<group>"; };
+		17265C941C761BDD00F2C9A3 /* UIView+RTEAutolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RTEAutolayout.h"; sourceTree = "<group>"; };
+		17265C951C761BDD00F2C9A3 /* UIView+RTEAutolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RTEAutolayout.m"; sourceTree = "<group>"; };
+		17265C981C762E9000F2C9A3 /* RTEGeocodeTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTEGeocodeTask.h; sourceTree = "<group>"; };
+		17265C991C762E9000F2C9A3 /* RTEGeocodeTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEGeocodeTask.m; sourceTree = "<group>"; };
+		17265C9B1C76319E00F2C9A3 /* RTEForwardGeocodeParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTEForwardGeocodeParameters.h; sourceTree = "<group>"; };
+		17265C9C1C76319E00F2C9A3 /* RTEForwardGeocodeParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEForwardGeocodeParameters.m; sourceTree = "<group>"; };
+		17460FE51C76719100CD159C /* RTEQueryItemProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTEQueryItemProvider.h; sourceTree = "<group>"; };
+		17460FE61C767E6C00CD159C /* RTEMapboxClientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTEMapboxClientHelper.h; sourceTree = "<group>"; };
+		17460FE71C767E6C00CD159C /* RTEMapboxClientHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEMapboxClientHelper.m; sourceTree = "<group>"; };
+		17460FEF1C76BDA900CD159C /* RTEGeocodeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTEGeocodeResult.h; sourceTree = "<group>"; };
+		17460FF01C76BDA900CD159C /* RTEGeocodeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEGeocodeResult.m; sourceTree = "<group>"; };
 		17D685431C754F8F00207661 /* Routes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Routes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D685471C754F9000207661 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17D685491C754F9000207661 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		17D6854A1C754F9000207661 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		17D685501C754F9000207661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		17D685521C754F9000207661 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D685551C754F9000207661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17D685571C754F9000207661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,8 +71,26 @@
 			children = (
 				17265C8B1C7558E800F2C9A3 /* UINavigationController+RTEExtensions.h */,
 				17265C8C1C7558E800F2C9A3 /* UINavigationController+RTEExtensions.m */,
+				17265C941C761BDD00F2C9A3 /* UIView+RTEAutolayout.h */,
+				17265C951C761BDD00F2C9A3 /* UIView+RTEAutolayout.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		17265C971C762E7A00F2C9A3 /* MapBoxAPI */ = {
+			isa = PBXGroup;
+			children = (
+				17460FE61C767E6C00CD159C /* RTEMapboxClientHelper.h */,
+				17460FE71C767E6C00CD159C /* RTEMapboxClientHelper.m */,
+				17265C9B1C76319E00F2C9A3 /* RTEForwardGeocodeParameters.h */,
+				17265C9C1C76319E00F2C9A3 /* RTEForwardGeocodeParameters.m */,
+				17265C981C762E9000F2C9A3 /* RTEGeocodeTask.h */,
+				17265C991C762E9000F2C9A3 /* RTEGeocodeTask.m */,
+				17460FE51C76719100CD159C /* RTEQueryItemProvider.h */,
+				17460FEF1C76BDA900CD159C /* RTEGeocodeResult.h */,
+				17460FF01C76BDA900CD159C /* RTEGeocodeResult.m */,
+			);
+			name = MapBoxAPI;
 			sourceTree = "<group>";
 		};
 		17D6853A1C754F8F00207661 = {
@@ -79,13 +114,15 @@
 		17D685451C754F8F00207661 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				17265C971C762E7A00F2C9A3 /* MapBoxAPI */,
 				17265C8E1C75594000F2C9A3 /* Categories */,
 				17D685491C754F9000207661 /* AppDelegate.h */,
 				17D6854A1C754F9000207661 /* AppDelegate.m */,
 				17265C881C7554E700F2C9A3 /* RTEMapViewController.h */,
 				17265C891C7554E700F2C9A3 /* RTEMapViewController.m */,
 				17265C8F1C755C4100F2C9A3 /* RTEMapViewController.xib */,
-				17D6854F1C754F9000207661 /* Main.storyboard */,
+				17265C911C76178E00F2C9A3 /* RTESearchResultsViewController.h */,
+				17265C921C76178E00F2C9A3 /* RTESearchResultsViewController.m */,
 				17D685521C754F9000207661 /* Assets.xcassets */,
 				17D685541C754F9000207661 /* LaunchScreen.storyboard */,
 				17D685571C754F9000207661 /* Info.plist */,
@@ -183,7 +220,6 @@
 				17D685561C754F9000207661 /* LaunchScreen.storyboard in Resources */,
 				17265C901C755C4100F2C9A3 /* RTEMapViewController.xib in Resources */,
 				17D685531C754F9000207661 /* Assets.xcassets in Resources */,
-				17D685511C754F9000207661 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,8 +279,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				17265C8A1C7554E700F2C9A3 /* RTEMapViewController.m in Sources */,
+				17460FF11C76BDA900CD159C /* RTEGeocodeResult.m in Sources */,
+				17265C961C761BDD00F2C9A3 /* UIView+RTEAutolayout.m in Sources */,
+				17265C9D1C76319E00F2C9A3 /* RTEForwardGeocodeParameters.m in Sources */,
+				17265C9A1C762E9000F2C9A3 /* RTEGeocodeTask.m in Sources */,
+				17265C931C76178E00F2C9A3 /* RTESearchResultsViewController.m in Sources */,
 				17265C8D1C7558E800F2C9A3 /* UINavigationController+RTEExtensions.m in Sources */,
 				17D6854B1C754F9000207661 /* AppDelegate.m in Sources */,
+				17460FE81C767E6C00CD159C /* RTEMapboxClientHelper.m in Sources */,
 				17D685481C754F9000207661 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,14 +294,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		17D6854F1C754F9000207661 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				17D685501C754F9000207661 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		17D685541C754F9000207661 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
