@@ -264,7 +264,19 @@
 
 #pragma mark - RTESearchResultsViewControllerDelegate
 
+- (void)searchResultsViewController:(RTESearchResultsViewController *)viewController
+                    didSelectResult:(RTEGeocodeResult *)result
+{
+
+    [self dismissSearchResultsController:viewController];
+}
+
 - (void)searchResultsViewControllerDidCancel:(RTESearchResultsViewController *)viewController
+{
+    [self dismissSearchResultsController:viewController];
+}
+
+- (void)dismissSearchResultsController:(RTESearchResultsViewController *)viewController
 {
     [self.searchBar resignFirstResponder];
     
@@ -275,7 +287,7 @@
     [UIView animateWithDuration:.25 animations:^{
         viewController.view.alpha = 0.0;
     } completion:^(BOOL finished) {
-
+        
         [viewController.view removeFromSuperview];
         [viewController removeFromParentViewController];
     }];

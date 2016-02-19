@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class RTEGeocodeResult;
 @class RTESearchResultsViewController;
 
 @protocol RTESearchResultViewControllerDelegate <NSObject>
 
 @required
 - (void)searchResultsViewControllerDidCancel:(RTESearchResultsViewController *)viewController;
+
+- (void)searchResultsViewController:(RTESearchResultsViewController *)viewController
+                    didSelectResult:(RTEGeocodeResult *)result;
 
 @end
 

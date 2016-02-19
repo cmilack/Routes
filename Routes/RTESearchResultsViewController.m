@@ -50,12 +50,13 @@ NSString *const kRTESearchResultsTableCellId = @"defaultCell";
     
     
     navItem.leftBarButtonItem = nil;
-    navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(didTapDismissButton:)];
+    navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                               target:self
+                                                                               action:@selector(didTapDismissButton:)];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)didTapDismissButton:(UIBarButtonItem *)sender
@@ -99,6 +100,12 @@ NSString *const kRTESearchResultsTableCellId = @"defaultCell";
     cell.textLabel.text = result.placeName;
     cell.detailTextLabel.text = result.text;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RTEGeocodeResult *result = [self.lastResult objectAtIndex:indexPath.row];
+    [self.delegate searchResultsViewController:self didSelectResult:result];
 }
 
 #pragma mark - Search Bar Delegate
