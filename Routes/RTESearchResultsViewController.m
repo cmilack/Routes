@@ -82,7 +82,7 @@ NSString *const kRTESearchResultsTableCellId = @"defaultCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.lastResult.count;
+    return MAX(self.lastResult.count, 1);
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -97,8 +97,14 @@ NSString *const kRTESearchResultsTableCellId = @"defaultCell";
     // TODO: Setup custom cell reuse
     //
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-    cell.textLabel.text = result.placeName;
-    cell.detailTextLabel.text = result.text;
+    
+    if (self.lastResult.count == 0) {
+        cell.textLabel.text = @"No Recent Searches";
+    } else {
+        cell.textLabel.text = result.placeName;
+        cell.detailTextLabel.text = result.text;
+    }
+    
     return cell;
 }
 

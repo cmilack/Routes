@@ -277,7 +277,7 @@
 {
     // Zoom to the bounding box of the result
     //
-    [self.mapView setVisibleCoordinateBounds:result.boundingBox animated:YES];
+    [self.mapView setVisibleCoordinateBounds:result.boundingBox animated:NO];
     
     // Add an annotation to the result center point
     //
@@ -287,6 +287,7 @@
     annotation.subtitle = @"Welcome to my marker";
     
     [self.mapView addAnnotation:annotation];
+    [self.mapView selectAnnotation:annotation animated:YES];
     
     [self dismissSearchResultsController:viewController];
 }
