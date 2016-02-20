@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RTEMapViewController.h
 //  Routes
 //
 //  Created by Christopher Milack on 2/17/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface RTEMapViewController : UIViewController
 
 @end
-

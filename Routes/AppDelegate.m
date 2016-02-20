@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "RTEMapViewController.h"
+#import "RTEMapboxClientHelper.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +16,23 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:screenBounds];
+    
+    RTEMapViewController *mapViewController = [[RTEMapViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:mapViewController];    
+    self.window.rootViewController = navController;
+    
+    [self.window makeKeyAndVisible];
+    
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor darkGrayColor]];
+    [[UIToolbar appearance] setBarTintColor:[UIColor darkGrayColor]];
+    
+    [RTEMapboxClientHelper registerClientToken:@"pk.eyJ1IjoiY21pbGFjayIsImEiOiJtdUxlQmlNIn0.bDID_agbnwa76H5oWf7idQ"];
+    
     return YES;
 }
 
