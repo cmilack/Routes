@@ -44,4 +44,21 @@
 
 }
 
+#pragma mark - MGLAnnotation
+
+- (CLLocationCoordinate2D)coordinate
+{
+    return self.center;
+}
+
+- (NSString *)title
+{
+    return self.text;
+}
+
+- (NSString *)subtitle
+{
+    return @"";
+}
+
 @end

@@ -124,6 +124,18 @@
 			name = Distance;
 			sourceTree = "<group>";
 		};
+		17460FFD1C789AAD00CD159C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				17265C881C7554E700F2C9A3 /* RTEMapViewController.h */,
+				17265C891C7554E700F2C9A3 /* RTEMapViewController.m */,
+				17265C8F1C755C4100F2C9A3 /* RTEMapViewController.xib */,
+				17265C911C76178E00F2C9A3 /* RTESearchResultsViewController.h */,
+				17265C921C76178E00F2C9A3 /* RTESearchResultsViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		17D6853A1C754F8F00207661 = {
 			isa = PBXGroup;
 			children = (
@@ -146,14 +158,10 @@
 			isa = PBXGroup;
 			children = (
 				17265C971C762E7A00F2C9A3 /* MapBoxAPI */,
+				17460FFD1C789AAD00CD159C /* Controllers */,
 				17265C8E1C75594000F2C9A3 /* Categories */,
 				17D685491C754F9000207661 /* AppDelegate.h */,
 				17D6854A1C754F9000207661 /* AppDelegate.m */,
-				17265C881C7554E700F2C9A3 /* RTEMapViewController.h */,
-				17265C891C7554E700F2C9A3 /* RTEMapViewController.m */,
-				17265C8F1C755C4100F2C9A3 /* RTEMapViewController.xib */,
-				17265C911C76178E00F2C9A3 /* RTESearchResultsViewController.h */,
-				17265C921C76178E00F2C9A3 /* RTESearchResultsViewController.m */,
 				17D685521C754F9000207661 /* Assets.xcassets */,
 				17D685541C754F9000207661 /* LaunchScreen.storyboard */,
 				17D685571C754F9000207661 /* Info.plist */,

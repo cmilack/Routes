@@ -247,6 +247,16 @@
     return YES;
 }
 
+- (UIView *)mapView:(MGLMapView *)mapView rightCalloutAccessoryViewForAnnotation:(id<MGLAnnotation>)annotation
+{
+    return  [UIButton buttonWithType:UIButtonTypeDetailDisclosure];;
+}
+
+- (void)mapView:(MGLMapView *)mapView annotation:(id <MGLAnnotation>)annotation calloutAccessoryControlTapped:(UIControl *)control
+{
+    NSLog(@"tapped callout");
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -281,14 +291,8 @@
     //
     [self.mapView setVisibleCoordinateBounds:result.boundingBox animated:NO];
     
-    // Add an annotation to the result center point
-    //
-    MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
-    annotation.coordinate = result.center;
-    annotation.title = result.text;
-    
-    [self.mapView addAnnotation:annotation];
-    [self.mapView selectAnnotation:annotation animated:YES];
+    [self.mapView addAnnotation:result];
+    [self.mapView selectAnnotation:result animated:YES];
 
 // TODO: Work this back in when distance API is ready.
 //

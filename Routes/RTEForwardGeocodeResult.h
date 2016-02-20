@@ -10,13 +10,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Mapbox/Mapbox.h>
 
-@class MGLPolygon;
-@class MGLShape;
-
 // A model object representing a MapBox Forward Geocode Results
 // TODO: Handle additional fields - Properties, type, place name,etc.
 //
-@interface RTEForwardGeocodeResult : NSObject
+@interface RTEForwardGeocodeResult : NSObject <MGLAnnotation>
 
 @property (nonatomic) CLLocationCoordinate2D center;
 @property (nonatomic) MGLCoordinateBounds boundingBox;

@@ -110,7 +110,9 @@ NSString *const kRTESearchResultsTableCellId = @"defaultCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RTEForwardGeocodeResult *result = [self.lastResult objectAtIndex:indexPath.row];
+    RTEForwardGeocodeResult *result = [self.lastResult objectAtIndex:indexPath.row];    
+    self.searchBar.text = result.text;
+    
     [self.delegate searchResultsViewController:self didSelectResult:result];
 }
 
