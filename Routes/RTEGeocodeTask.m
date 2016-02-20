@@ -9,17 +9,17 @@
 #import "RTEGeocodeTask.h"
 #import "RTEForwardGeocodeParameters.h"
 #import "RTEMapboxClientHelper.h"
-#import "RTEGeocodeResult.h"
+#import "RTEForwardGeocodeResult.h"
 
 @implementation RTEGeocodeTask
 
-- (NSURLSessionTask *)executeWithQuery:(NSString *)query
+- (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
                             completion:(void(^)(NSURLSessionTask *task,NSArray *results, NSError *error))completion;
 {
-    return [self executeWithQuery:query parameters:nil completion:completion];
+    return [self executeForwardGeocodeWithQuery:query parameters:nil completion:completion];
 }
 
-- (NSURLSessionTask *)executeWithQuery:(NSString *)query
+- (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
                             parameters:(RTEForwardGeocodeParameters *)params
                             completion:(void(^)(NSURLSessionTask *task,NSArray *results, NSError *error))completion
 {
@@ -53,7 +53,7 @@
         NSMutableArray *results = [NSMutableArray array];
         for (NSDictionary *json in [jsonResult objectForKey:@"features"]){
             
-            RTEGeocodeResult *result = [[RTEGeocodeResult alloc] initWithDictionary:json];
+            RTEForwardGeocodeResult *result = [[RTEForwardGeocodeResult alloc] initWithDictionary:json];
             [results addObject:result];
         }
         

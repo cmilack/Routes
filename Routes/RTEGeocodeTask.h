@@ -18,11 +18,11 @@
 //
 @interface RTEGeocodeTask : NSObject
 
-- (NSURLSessionTask *)executeWithQuery:(NSString *)query
-                            completion:(void(^)(NSURLSessionTask *task,NSArray *results, NSError *error))completion;
+- (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
+                                          completion:(void(^)(NSURLSessionTask *task,NSArray *results, NSError *error))completion;
 
-- (NSURLSessionTask *)executeWithQuery:(NSString *)query
-                            parameters:(RTEForwardGeocodeParameters *)params
-                            completion:(void(^)(NSURLSessionTask *task, NSArray *results, NSError *error))completion;
+- (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
+                                          parameters:(RTEForwardGeocodeParameters *)params
+                                          completion:(void(^)(NSURLSessionTask *task, NSArray *results, NSError *error))completion;
 
 @end

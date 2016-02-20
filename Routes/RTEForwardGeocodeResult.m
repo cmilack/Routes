@@ -6,9 +6,9 @@
 //  Copyright © 2016 Christopher Milack. All rights reserved.
 //
 
-#import "RTEGeocodeResult.h"
+#import "RTEForwardGeocodeResult.h"
 
-@implementation RTEGeocodeResult
+@implementation RTEForwardGeocodeResult
 
 - (instancetype)initWithDictionary:(NSDictionary *)json
 {

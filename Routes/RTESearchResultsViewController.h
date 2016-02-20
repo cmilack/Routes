@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class RTEGeocodeResult;
+@class RTEForwardGeocodeResult;
 @class RTESearchResultsViewController;
 
 @protocol RTESearchResultViewControllerDelegate <NSObject>
@@ -17,7 +17,7 @@
 - (void)searchResultsViewControllerDidCancel:(RTESearchResultsViewController *)viewController;
 
 - (void)searchResultsViewController:(RTESearchResultsViewController *)viewController
-                    didSelectResult:(RTEGeocodeResult *)result;
+                    didSelectResult:(RTEForwardGeocodeResult *)result;
 
 @end
 

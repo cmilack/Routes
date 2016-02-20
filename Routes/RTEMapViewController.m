@@ -9,7 +9,7 @@
 #import "RTEMapViewController.h"
 #import <Mapbox/Mapbox.h>
 
-#import "RTEGeocodeResult.h"
+#import "RTEForwardGeocodeResult.h"
 #import "RTESearchResultsViewController.h"
 
 #import "UINavigationController+RTEExtensions.h"
@@ -273,7 +273,7 @@
 #pragma mark - RTESearchResultsViewControllerDelegate
 
 - (void)searchResultsViewController:(RTESearchResultsViewController *)viewController
-                    didSelectResult:(RTEGeocodeResult *)result
+                    didSelectResult:(RTEForwardGeocodeResult *)result
 {
     // Zoom to the bounding box of the result
     //

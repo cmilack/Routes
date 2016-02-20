@@ -8,7 +8,7 @@
 
 #import "RTESearchResultsViewController.h"
 #import "RTEGeocodeTask.h"
-#import "RTEGeocodeResult.h"
+#import "RTEForwardGeocodeResult.h"
 
 NSString *const kRTESearchResultsTableCellId = @"defaultCell";
 
@@ -92,7 +92,7 @@ NSString *const kRTESearchResultsTableCellId = @"defaultCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RTEGeocodeResult *result = [self.lastResult objectAtIndex:indexPath.row];
+    RTEForwardGeocodeResult *result = [self.lastResult objectAtIndex:indexPath.row];
     
     // TODO: Setup custom cell reuse
     //
@@ -110,7 +110,7 @@ NSString *const kRTESearchResultsTableCellId = @"defaultCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RTEGeocodeResult *result = [self.lastResult objectAtIndex:indexPath.row];
+    RTEForwardGeocodeResult *result = [self.lastResult objectAtIndex:indexPath.row];
     [self.delegate searchResultsViewController:self didSelectResult:result];
 }
 
@@ -125,7 +125,7 @@ NSString *const kRTESearchResultsTableCellId = @"defaultCell";
 {
     if ([searchText isEqualToString:self.searchBar.text]) {
         
-        [self.geocodeTask executeWithQuery:searchText completion:^(NSURLSessionTask *task, NSArray *results, NSError *error) {
+        [self.geocodeTask executeForwardGeocodeWithQuery:searchText completion:^(NSURLSessionTask *task, NSArray *results, NSError *error) {
             
             NSLog(@"task complete");
             self.lastResult = results;
