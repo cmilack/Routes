@@ -25,8 +25,6 @@
 @property (nonatomic,copy) NSString *placeName;
 @property (nonatomic,copy) NSString *featureId;
 
-// TODO: @property (nonatomic) MGLShape *geometry;
-
-- (instancetype)initWithDictionary:(NSDictionary *)json;
+- (instancetype)initWithJsonResult:(NSDictionary *)json;
 
 @end

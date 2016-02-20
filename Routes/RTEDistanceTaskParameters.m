@@ -37,6 +37,15 @@
     return params;
 }
 
+- (CLLocationCoordinate2D)pointAtIndex:(NSUInteger)index
+{
+    CLLocationCoordinate2D coordinate;
+    NSValue *value = [self.stops objectAtIndex:index];
+    [value getValue:&coordinate];
+    
+    return coordinate;
+}
+
 - (void)addPoint:(CLLocationCoordinate2D)point
 {
     NSValue *startValue = [NSValue valueWithBytes:&point objCType:@encode(CLLocationCoordinate2D)];
@@ -57,6 +66,11 @@
 - (void)removeAllPoints
 {
     [self.stops removeAllObjects];
+}
+
+- (NSUInteger)numberOfPoints
+{
+    return self.stops.count;
 }
 
 @end

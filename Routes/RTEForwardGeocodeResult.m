@@ -10,7 +10,7 @@
 
 @implementation RTEForwardGeocodeResult
 
-- (instancetype)initWithDictionary:(NSDictionary *)json
+- (instancetype)initWithJsonResult:(NSDictionary *)json
 {
     self = [super init];
     if (self) {

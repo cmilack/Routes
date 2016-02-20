@@ -10,6 +10,8 @@
 #import <Mapbox/Mapbox.h>
 
 #import "RTEForwardGeocodeResult.h"
+#import "RTEDistanceTaskParameters.h"
+#import "RTEDistanceTask.h"
 #import "RTESearchResultsViewController.h"
 
 #import "UINavigationController+RTEExtensions.h"
@@ -284,11 +286,25 @@
     MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
     annotation.coordinate = result.center;
     annotation.title = result.text;
-    annotation.subtitle = @"Welcome to my marker";
     
     [self.mapView addAnnotation:annotation];
     [self.mapView selectAnnotation:annotation animated:YES];
-    
+
+// TODO: Work this back in when distance API is ready.
+//
+//    if (self.mapView.userLocation) {
+//
+//        CLLocationCoordinate2D userLocation = self.mapView.userLocation.location.coordinate;
+//        RTEDistanceTaskParameters *params = [RTEDistanceTaskParameters paramsWithStart:userLocation end:result.center];
+//        
+//        RTEDistanceTask *task = [[RTEDistanceTask alloc] init];
+//        __block NSURLSessionTask *urlSessionTask = [task executeWithParameters:params
+//                                                                    completion:^(NSURLSessionTask *task, RTEDistanceTaskResult *result, NSError *error) {
+//            
+//            urlSessionTask = nil;
+//        }];
+//    }
+//    
     [self dismissSearchResultsController:viewController];
 }
 

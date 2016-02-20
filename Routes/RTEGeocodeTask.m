@@ -53,7 +53,7 @@
         NSMutableArray *results = [NSMutableArray array];
         for (NSDictionary *json in [jsonResult objectForKey:@"features"]){
             
-            RTEForwardGeocodeResult *result = [[RTEForwardGeocodeResult alloc] initWithDictionary:json];
+            RTEForwardGeocodeResult *result = [[RTEForwardGeocodeResult alloc] initWithJsonResult:json];
             [results addObject:result];
         }
         

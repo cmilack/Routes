@@ -9,16 +9,21 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+const NSInteger RTEResultNotFound = -1;
+
 @interface RTEDistanceTaskResult : NSObject
+
+- (instancetype)initWithJsonResult:(NSDictionary *)json;
 
 // Get the coordinate for a specified stop index. This is the same as the input
 // data stops defined in RTEDistanceTaskParameters but we provide access from here
 // for convenience
 //
-- (CLLocationCoordinate2D)inputLocationAtIndex:(NSUInteger)index;
+// - (CLLocationCoordinate2D)inputLocationAtIndex:(NSUInteger)index;
 
 // Returns the distance between two stops
+// Returns RTEResultNotFound for invalid input
 //
-- (double)distanceFromStopAtIndex:(NSUInteger)start toIndex:(NSUInteger)end;
+- (NSInteger)distanceFromStopAtIndex:(NSUInteger)start toIndex:(NSUInteger)end;
 
 @end

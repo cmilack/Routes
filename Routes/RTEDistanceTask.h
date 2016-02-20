@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class RTEDistanceTaskParameters;
+@class RTEDistanceTaskResult;
+
 @interface RTEDistanceTask : NSObject
 
-- (void)
+- (NSURLSessionTask *)executeWithParameters:(RTEDistanceTaskParameters *)params
+                                 completion:(void(^)(NSURLSessionTask *task, RTEDistanceTaskResult *result, NSError *error))completion;
 
 @end

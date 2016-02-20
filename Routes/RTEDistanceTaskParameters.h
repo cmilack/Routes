@@ -34,6 +34,8 @@ typedef enum : NSUInteger {
 
 - (void)removeAllPoints;
 
+- (NSUInteger)numberOfPoints;
+
 @property (nonatomic) RTEDistanceTaskProfile profile;
 
 @end
