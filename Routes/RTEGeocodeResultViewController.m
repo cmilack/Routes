@@ -108,13 +108,14 @@
 {
     if (indexPath.section == 0 ) {
         
+        if (indexPath.row == 0) {
+            
+            // Get Directions
+            //
+        }
         
     } else if (indexPath.section == 1){
-        
-        CNContact *contact = [[CNContact alloc] init];
-        CNContactViewController *vc = [CNContactViewController viewControllerForNewContact:contact];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
-        [self presentViewController:navController animated:YES completion:nil];
+
     }
 }
 
