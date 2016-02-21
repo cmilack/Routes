@@ -13,6 +13,7 @@
 #import "RTEDistanceTaskParameters.h"
 #import "RTEDistanceTask.h"
 #import "RTESearchResultsViewController.h"
+#import "RTEGeocodeResultViewController.h"
 
 #import "UINavigationController+RTEExtensions.h"
 #import "UIView+RTEAutolayout.h"
@@ -254,7 +255,11 @@
 
 - (void)mapView:(MGLMapView *)mapView annotation:(id <MGLAnnotation>)annotation calloutAccessoryControlTapped:(UIControl *)control
 {
-    NSLog(@"tapped callout");
+    if ([annotation isKindOfClass:[RTEForwardGeocodeResult class]]) {
+        
+        RTEGeocodeResultViewController *vc = [[RTEGeocodeResultViewController alloc] initWithGeocodeResult:annotation];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - UISearchBarDelegate

@@ -19,6 +19,7 @@
 		17460FF41C77CA2F00CD159C /* RTEDistanceTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 17460FF31C77CA2F00CD159C /* RTEDistanceTask.m */; };
 		17460FF71C77CA5D00CD159C /* RTEDistanceTaskParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 17460FF61C77CA5D00CD159C /* RTEDistanceTaskParameters.m */; };
 		17460FFA1C77EF8C00CD159C /* RTEDistanceTaskResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 17460FF91C77EF8B00CD159C /* RTEDistanceTaskResult.m */; };
+		174610001C789B9500CD159C /* RTEGeocodeResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17460FFF1C789B9500CD159C /* RTEGeocodeResultViewController.m */; };
 		17D685481C754F9000207661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D685471C754F9000207661 /* main.m */; };
 		17D6854B1C754F9000207661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6854A1C754F9000207661 /* AppDelegate.m */; };
 		17D685531C754F9000207661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D685521C754F9000207661 /* Assets.xcassets */; };
@@ -52,6 +53,8 @@
 		17460FF61C77CA5D00CD159C /* RTEDistanceTaskParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEDistanceTaskParameters.m; sourceTree = "<group>"; };
 		17460FF81C77EF8B00CD159C /* RTEDistanceTaskResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTEDistanceTaskResult.h; sourceTree = "<group>"; };
 		17460FF91C77EF8B00CD159C /* RTEDistanceTaskResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEDistanceTaskResult.m; sourceTree = "<group>"; };
+		17460FFE1C789B9500CD159C /* RTEGeocodeResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTEGeocodeResultViewController.h; sourceTree = "<group>"; };
+		17460FFF1C789B9500CD159C /* RTEGeocodeResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEGeocodeResultViewController.m; sourceTree = "<group>"; };
 		17D685431C754F8F00207661 /* Routes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Routes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D685471C754F9000207661 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17D685491C754F9000207661 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				17265C8F1C755C4100F2C9A3 /* RTEMapViewController.xib */,
 				17265C911C76178E00F2C9A3 /* RTESearchResultsViewController.h */,
 				17265C921C76178E00F2C9A3 /* RTESearchResultsViewController.m */,
+				17460FFE1C789B9500CD159C /* RTEGeocodeResultViewController.h */,
+				17460FFF1C789B9500CD159C /* RTEGeocodeResultViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				174610001C789B9500CD159C /* RTEGeocodeResultViewController.m in Sources */,
 				17460FF41C77CA2F00CD159C /* RTEDistanceTask.m in Sources */,
 				17265C8A1C7554E700F2C9A3 /* RTEMapViewController.m in Sources */,
 				17460FFA1C77EF8C00CD159C /* RTEDistanceTaskResult.m in Sources */,
