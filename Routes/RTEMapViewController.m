@@ -9,7 +9,7 @@
 #import "RTEMapViewController.h"
 #import <Mapbox/Mapbox.h>
 
-#import "RTEForwardGeocodeResult.h"
+#import "RTEGeocodeResult.h"
 #import "RTEDistanceTaskParameters.h"
 #import "RTEDistanceTask.h"
 #import "RTESearchResultsViewController.h"
@@ -255,7 +255,7 @@
 
 - (void)mapView:(MGLMapView *)mapView annotation:(id <MGLAnnotation>)annotation calloutAccessoryControlTapped:(UIControl *)control
 {
-    if ([annotation isKindOfClass:[RTEForwardGeocodeResult class]]) {
+    if ([annotation isKindOfClass:[RTEGeocodeResult class]]) {
         
         RTEGeocodeResultViewController *vc = [[RTEGeocodeResultViewController alloc] initWithGeocodeResult:annotation];
         [self.navigationController pushViewController:vc animated:YES];
@@ -290,7 +290,7 @@
 #pragma mark - RTESearchResultsViewControllerDelegate
 
 - (void)searchResultsViewController:(RTESearchResultsViewController *)viewController
-                    didSelectResult:(RTEForwardGeocodeResult *)result
+                    didSelectResult:(RTEGeocodeResult *)result
 {
     // Zoom to the bounding box of the result
     //

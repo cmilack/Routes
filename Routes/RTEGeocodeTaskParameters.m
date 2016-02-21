@@ -6,9 +6,9 @@
 //  Copyright © 2016 Christopher Milack. All rights reserved.
 //
 
-#import "RTEForwardGeocodeParameters.h"
+#import "RTEGeocodeTaskParameters.h"
 
-@implementation RTEForwardGeocodeParameters
+@implementation RTEGeocodeTaskParameters
 
 - (NSArray *)queryItems
 {

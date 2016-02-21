@@ -27,7 +27,7 @@
 }
 
 - (NSURLSessionTask *)executeWithParameters:(RTEDistanceTaskParameters *)params
-                                 completion:(void(^)(NSURLSessionTask *task, RTEDistanceTaskResult *result, NSError *error))completion
+                                 completion:(void(^)(NSURLSessionTask *task, RTEDistanceResult *result, NSError *error))completion
 {
     __block NSURLSessionDataTask *task;
     

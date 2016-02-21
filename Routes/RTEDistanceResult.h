@@ -11,7 +11,7 @@
 
 const NSInteger RTEResultNotFound = -1;
 
-@interface RTEDistanceTaskResult : NSObject
+@interface RTEDistanceResult : NSObject
 
 - (instancetype)initWithJsonResult:(NSDictionary *)json;
 

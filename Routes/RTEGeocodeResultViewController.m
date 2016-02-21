@@ -8,13 +8,13 @@
 
 #import "RTEGeocodeResultViewController.h"
 #import <Mapbox/Mapbox.h>
-#import "RTEForwardGeocodeResult.h"
+#import "RTEGeocodeResult.h"
 #import <ContactsUI/ContactsUI.h>
 
 
 @implementation RTEGeocodeResultViewController
 
-- (instancetype)initWithGeocodeResult:(RTEForwardGeocodeResult *)result
+- (instancetype)initWithGeocodeResult:(RTEGeocodeResult *)result
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {

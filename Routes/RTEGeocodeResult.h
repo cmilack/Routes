@@ -13,7 +13,7 @@
 // A model object representing a MapBox Forward Geocode Results
 // TODO: Handle additional fields - Properties, type, place name,etc.
 //
-@interface RTEForwardGeocodeResult : NSObject <MGLAnnotation>
+@interface RTEGeocodeResult : NSObject <MGLAnnotation>
 
 @property (nonatomic) CLLocationCoordinate2D center;
 @property (nonatomic) MGLCoordinateBounds boundingBox;

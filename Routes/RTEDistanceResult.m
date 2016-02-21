@@ -6,9 +6,9 @@
 //  Copyright © 2016 Christopher Milack. All rights reserved.
 //
 
-#import "RTEDistanceTaskResult.h"
+#import "RTEDistanceResult.h"
 
-@interface RTEDistanceTaskResult()
+@interface RTEDistanceResult()
 
 // An array of arrays - This is a matrix of distances from each input stop
 // to every other input stop. Keeping this internal and expposing only some basic
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation RTEDistanceTaskResult
+@implementation RTEDistanceResult
 
 - (instancetype)initWithJsonResult:(NSDictionary *)json
 {

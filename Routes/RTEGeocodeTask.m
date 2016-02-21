@@ -7,21 +7,21 @@
 //
 
 #import "RTEGeocodeTask.h"
-#import "RTEForwardGeocodeParameters.h"
+#import "RTEGeocodeTaskParameters.h"
 #import "RTEMapboxClientHelper.h"
-#import "RTEForwardGeocodeResult.h"
+#import "RTEGeocodeResult.h"
 
 @implementation RTEGeocodeTask
 
-- (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
-                            completion:(void(^)(NSURLSessionTask *task,NSArray *results, NSError *error))completion;
+- (NSURLSessionTask *)executeGeocodeWithQuery:(NSString *)query
+                            completion:(RTEGeocodeTaskCompletionBlock)completion;
 {
-    return [self executeForwardGeocodeWithQuery:query parameters:nil completion:completion];
+    return [self executeGeocodeWithQuery:query parameters:nil completion:completion];
 }
 
-- (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
-                            parameters:(RTEForwardGeocodeParameters *)params
-                            completion:(void(^)(NSURLSessionTask *task,NSArray *results, NSError *error))completion
+- (NSURLSessionTask *)executeGeocodeWithQuery:(NSString *)query
+                            parameters:(RTEGeocodeTaskParameters *)params
+                            completion:(RTEGeocodeTaskCompletionBlock)completion
 {
     __block NSURLSessionDataTask *task;
     
@@ -53,7 +53,7 @@
         NSMutableArray *results = [NSMutableArray array];
         for (NSDictionary *json in [jsonResult objectForKey:@"features"]){
             
-            RTEForwardGeocodeResult *result = [[RTEForwardGeocodeResult alloc] initWithJsonResult:json];
+            RTEGeocodeResult *result = [[RTEGeocodeResult alloc] initWithJsonResult:json];
             [results addObject:result];
         }
         
@@ -93,7 +93,7 @@
 
 
 - (NSURLSessionTask *)executeReverseGeocodeWithLocation:(CLLocationCoordinate2D)location
-                                             completion:(void(^)(NSURLSessionTask *task, id result, NSError *error))completion
+                                             completion:(RTEReverseGeocodeTaskCompletionBlock)completion
 {
     NSAssert(NO, @"Not Yet Implemented");
     return nil;

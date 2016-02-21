@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class RTEDistanceTaskParameters;
-@class RTEDistanceTaskResult;
+@class RTEDistanceResult;
+
+typedef void(^RTEDistanceTaskCompletionBlock)(NSURLSessionTask *task, RTEDistanceResult *result, NSError *error);
 
 @interface RTEDistanceTask : NSObject
 
 - (NSURLSessionTask *)executeWithParameters:(RTEDistanceTaskParameters *)params
-                                 completion:(void(^)(NSURLSessionTask *task, RTEDistanceTaskResult *result, NSError *error))completion;
+                                 completion:(RTEDistanceTaskCompletionBlock)completion;
 
 @end

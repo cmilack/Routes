@@ -9,16 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "RTEQueryItemProvider.h"
+#import "RTEMapBoxEnumerations.h"
 
 @protocol RTEQueryItemProvider;
 
-typedef enum : NSUInteger {
-    RTECountryCodeAll,
-    RTECountryCodeUSA,
-} RTECountryCode;
-
-
-@interface RTEForwardGeocodeParameters : NSObject <RTEQueryItemProvider>
+@interface RTEGeocodeTaskParameters : NSObject <RTEQueryItemProvider>
 
 // Optional: Support for country basd searches
 //

@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class RTEForwardGeocodeResult;
+@class RTEGeocodeResult;
 
 @interface RTEGeocodeResultViewController : UITableViewController
 
-- (instancetype)initWithGeocodeResult:(RTEForwardGeocodeResult *)result;
+- (instancetype)initWithGeocodeResult:(RTEGeocodeResult *)result;
 
-@property (nonatomic,readonly) RTEForwardGeocodeResult *result;
+@property (nonatomic,readonly) RTEGeocodeResult *result;
 
 @end

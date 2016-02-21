@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@class RTEForwardGeocodeParameters;
+@class RTEGeocodeTaskParameters;
+
+typedef void(^RTEGeocodeTaskCompletionBlock)(NSURLSessionTask *task, NSArray *results, NSError *error);
+typedef void(^RTEReverseGeocodeTaskCompletionBlock)(NSURLSessionTask *task, id result, NSError *error);
 
 // Execute geocoding tasks using the default mapbox.places dataset
 //
@@ -19,14 +22,14 @@
 //
 @interface RTEGeocodeTask : NSObject
 
-- (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
-                                          completion:(void(^)(NSURLSessionTask *task,NSArray *results, NSError *error))completion;
+- (NSURLSessionTask *)executeGeocodeWithQuery:(NSString *)query
+                                   completion:(RTEGeocodeTaskCompletionBlock)completion;
 
-- (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
-                                          parameters:(RTEForwardGeocodeParameters *)params
-                                          completion:(void(^)(NSURLSessionTask *task, NSArray *results, NSError *error))completion;
+- (NSURLSessionTask *)executeGeocodeWithQuery:(NSString *)query
+                                   parameters:(RTEGeocodeTaskParameters *)params
+                                   completion:(RTEGeocodeTaskCompletionBlock)completion;
 
 - (NSURLSessionTask *)executeReverseGeocodeWithLocation:(CLLocationCoordinate2D)location
-                                         completion:(void(^)(NSURLSessionTask *task, id result, NSError *error))completion;
+                                             completion:(RTEReverseGeocodeTaskCompletionBlock)completion;
 
 @end
