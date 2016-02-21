@@ -92,4 +92,12 @@
 }
 
 
+- (NSURLSessionTask *)executeReverseGeocodeWithLocation:(CLLocationCoordinate2D)location
+                                             completion:(void(^)(NSURLSessionTask *task, id result, NSError *error))completion
+{
+    NSAssert(NO, @"Not Yet Implemented");
+    return nil;
+}
+
+
 @end

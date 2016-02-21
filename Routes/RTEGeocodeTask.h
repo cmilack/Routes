@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @class RTEForwardGeocodeParameters;
 
@@ -24,5 +25,8 @@
 - (NSURLSessionTask *)executeForwardGeocodeWithQuery:(NSString *)query
                                           parameters:(RTEForwardGeocodeParameters *)params
                                           completion:(void(^)(NSURLSessionTask *task, NSArray *results, NSError *error))completion;
+
+- (NSURLSessionTask *)executeReverseGeocodeWithLocation:(CLLocationCoordinate2D)location
+                                         completion:(void(^)(NSURLSessionTask *task, id result, NSError *error))completion;
 
 @end
