@@ -60,23 +60,4 @@
     return task;
 }
 
-- (NSData *)requestDataFromParams:(RTEDistanceTaskParameters *)params error:(NSError **)error
-{
-    NSUInteger numOfStops = [params numberOfPoints];
-    NSMutableArray *stops = [NSMutableArray array];
-    
-    for (int i= 0; i< numOfStops; i++){
-        
-        CLLocationCoordinate2D point = [params pointAtIndex:i];
-        NSArray *coordinate = @[@(point.latitude),@(point.longitude)];
-        [stops addObject:coordinate];
-    }
-    
-    NSDictionary *coordinates = @{ @"coordinates" : stops };
-    
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:coordinates options:0 error:error];
-
-    return postData;
-}
-
 @end

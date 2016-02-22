@@ -19,7 +19,7 @@ typedef enum : NSUInteger {
 
 // Defaults to RTECountryCodeAll
 //
-@property (nonatomic) RTECountryCode countryCode;
+@property (nonatomic) RTEProfile profile;
 
 // Defaults to NO
 //

@@ -51,37 +51,7 @@
         }
         
     };
-    
-    NSMutableArray *queryItems = [NSMutableArray array];
-    RTECountryCode countryCode;
-    if (params) {
-        
-        countryCode = params.countryCode;
-        [queryItems addObjectsFromArray:[params queryItems]];
-    }
-    
-    // Fetch the default security query item
-    //
-    NSURLQueryItem *securityItem = [MGLAccountManager rte_clientAccessQueryItem];
-    if (securityItem) {
-        [queryItems addObject:securityItem];
-    }
-    
-    NSString *profile = @"";//
-    
-    NSString *waypointsText;
-//    for (<#initialization#>; <#condition#>; <#increment#>) {
-//        <#statements#>
-//    }
-    
-    NSString *urlString = [NSString stringWithFormat:@"https://api.mapbox.com/v5/directions/%@/%@.json",profile, waypointsText];
-    
-    NSURLComponents *components = [NSURLComponents componentsWithString:urlString];
-    components.queryItems = queryItems;
-    
-    task = [[NSURLSession sharedSession] dataTaskWithURL:components.URL completionHandler:serviceCompletion];
-    [task resume];
-    
+
     return task;
 }
 
