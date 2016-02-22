@@ -15,11 +15,7 @@ typedef void(^RTEDirectionsTaskCompletionBlock)(NSURLSessionTask *task, RTEDirec
 
 @interface RTEDirectionsTask : NSObject
 
-- (NSURLSessionTask *)executeWithWaypoints:(NSArray *)waypoints
-                                completion:(RTEDirectionsTaskCompletionBlock)completion;
-
-- (NSURLSessionTask *)executeWithWaypoints:(NSArray *)waypoints
-                                    params:(RTEDirectionsTaskParameters *)params
-                                completion:(RTEDirectionsTaskCompletionBlock)completion;
+- (NSURLSessionTask *)executeWithParams:(RTEDirectionsTaskParameters *)params
+                             completion:(RTEDirectionsTaskCompletionBlock)completion;
 
 @end

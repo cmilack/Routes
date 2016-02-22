@@ -11,7 +11,6 @@
 #import "RTEGeocodeResult.h"
 #import <ContactsUI/ContactsUI.h>
 
-
 @implementation RTEGeocodeResultViewController
 
 - (instancetype)initWithGeocodeResult:(RTEGeocodeResult *)result
@@ -110,8 +109,7 @@
         
         if (indexPath.row == 0) {
             
-            // Get Directions
-            //
+            [self.delegate geocodeResultViewControllerDidSelectDirectionsOption:self];
         }
         
     } else if (indexPath.section == 1){

@@ -14,6 +14,9 @@
 
 @implementation RTEDirectionsRequestFactory
 
+// https://api.mapbox.com/v4/directions/mapbox.driving/-122.42,37.78;-77.03,38.91.json?
+// access_token=pk.eyJ1IjoiY21pbGFjayIsImEiOiJtdUxlQmlNIn0.bDID_agbnwa76H5oWf7idQ
+//
 + (NSURLRequest *)urlRequestWithParameters:(RTEDirectionsTaskParameters *)params
 {
     // Add the query items generated from parameters
@@ -30,7 +33,7 @@
 
     NSString *profile = RTEProfileAsString(params.profile);
     NSString *waypointsText = [self urlFormattedWaypoints:params.waypoints];
-    NSString *urlString = [NSString stringWithFormat:@"https://api.mapbox.com/v5/directions/%@/%@.json",profile, waypointsText];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.mapbox.com/v4/directions/mapbox.%@/%@.json",profile, waypointsText];
     
     NSURLComponents *components = [NSURLComponents componentsWithString:urlString];
     components.queryItems = queryItems;
@@ -45,7 +48,8 @@
     for (NSInteger i= 0; i < waypoints.count; i++) {
         
         CLLocationCoordinate2D coordinate = [waypoints pointAtIndex:i];
-        [NSString stringWithFormat:@"%f,%f",coordinate.latitude, coordinate.longitude];
+        NSString *formattedCoordinate = [NSString stringWithFormat:@"%f,%f",coordinate.longitude, coordinate.latitude];
+        [coordinates addObject:formattedCoordinate];
     }
     return [coordinates componentsJoinedByString:@";"];
 }

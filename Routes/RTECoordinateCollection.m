@@ -16,6 +16,15 @@
 
 @implementation RTECoordinateCollection
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _coordinates = [NSMutableArray array];
+    }
+    return self;
+}
+
 - (CLLocationCoordinate2D)pointAtIndex:(NSUInteger)index
 {
     CLLocationCoordinate2D coordinate;

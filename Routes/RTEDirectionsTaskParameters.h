@@ -18,6 +18,9 @@ typedef enum : NSUInteger {
 
 @interface RTEDirectionsTaskParameters : NSObject <RTEQueryItemProvider>
 
++ (instancetype)paramsWithOrigin:(CLLocationCoordinate2D)origin
+                     destination:(CLLocationCoordinate2D)destination;
+
 @property (nonatomic,readonly) RTECoordinateCollection *waypoints;
 
 // Defaults to RTECountryCodeAll

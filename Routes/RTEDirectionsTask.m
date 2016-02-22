@@ -14,15 +14,9 @@
 
 @implementation RTEDirectionsTask
 
-- (NSURLSessionTask *)executeWithWaypoints:(NSArray *)waypoints
-                                completion:(RTEDirectionsTaskCompletionBlock)completion
-{
-    return [self executeWithWaypoints:waypoints params:nil completion:completion];
-}
+- (NSURLSessionTask *)executeWithParams:(RTEDirectionsTaskParameters *)params
+                             completion:(RTEDirectionsTaskCompletionBlock)completion
 
-- (NSURLSessionTask *)executeWithWaypoints:(NSArray *)waypoints
-                                    params:(RTEDirectionsTaskParameters *)params
-                                completion:(RTEDirectionsTaskCompletionBlock)completion
 {
     __block NSURLSessionDataTask *task;
     

@@ -14,11 +14,14 @@
 #import "RTEDistanceTask.h"
 #import "RTESearchResultsViewController.h"
 #import "RTEGeocodeResultViewController.h"
+#import "RTEDirectionsTask.h"
+#import "RTEDirectionsTaskParameters.h"
 
 #import "UINavigationController+RTEExtensions.h"
 #import "UIView+RTEAutolayout.h"
 
-@interface RTEMapViewController ()<MGLMapViewDelegate, UISearchBarDelegate,RTESearchResultViewControllerDelegate>
+@interface RTEMapViewController ()<MGLMapViewDelegate, UISearchBarDelegate,
+RTESearchResultViewControllerDelegate,RTEGeocodeResultViewControllerDelegate>
 
 @property (nonatomic,weak) IBOutlet MGLMapView *mapView;
 
@@ -258,6 +261,7 @@
     if ([annotation isKindOfClass:[RTEGeocodeResult class]]) {
         
         RTEGeocodeResultViewController *vc = [[RTEGeocodeResultViewController alloc] initWithGeocodeResult:annotation];
+        vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -299,7 +303,7 @@
     [self.mapView addAnnotation:result];
     [self.mapView selectAnnotation:result animated:YES];
 
-// TODO: Work this back in when distance API is ready.
+// TODO: Work this back in when distance API is ready (out of preview).
 //
 //    if (self.mapView.userLocation) {
 //
@@ -345,6 +349,27 @@
     // Update left and right bar button items
     //
     [self addDefaultSideNavigationItems];
+}
+
+#pragma mark - RTEGeocodeResultViewControllerDelegate
+
+- (void)geocodeResultViewControllerDidSelectDirectionsOption:(RTEGeocodeResultViewController *)viewController
+{
+    // Get Directions
+    //
+    CLLocationCoordinate2D origin = self.mapView.userLocation.location.coordinate;
+    CLLocationCoordinate2D destination = viewController.result.coordinate;
+    RTEDirectionsTaskParameters *params = [RTEDirectionsTaskParameters paramsWithOrigin:origin
+                                                                            destination:destination];
+    
+    __block RTEDirectionsTask *task = [[RTEDirectionsTask alloc] init];
+    [task executeWithParams:params completion:^(NSURLSessionTask *task, RTEDirectionsResult *result, NSError *error) {
+        
+        NSLog(@"result");
+        task = nil;
+    }];
+    
+    [self.navigationController popToViewController:self animated:YES];
 }
 
 @end

@@ -10,6 +10,15 @@
 
 @implementation RTEDirectionsTaskParameters
 
++ (instancetype)paramsWithOrigin:(CLLocationCoordinate2D)origin
+                     destination:(CLLocationCoordinate2D)destination
+{
+    RTEDirectionsTaskParameters *params = [[RTEDirectionsTaskParameters alloc] init];
+    [params.waypoints addPoint:origin];
+    [params.waypoints addPoint:destination];
+    return params;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -21,8 +30,7 @@
 
 - (NSArray *)queryItems
 {
-    NSAssert(NO, @"Not yet implemented");
-    return nil;
+    return @[];
 }
 
 @end

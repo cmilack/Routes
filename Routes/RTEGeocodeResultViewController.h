@@ -9,11 +9,20 @@
 #import <UIKit/UIKit.h>
 
 @class RTEGeocodeResult;
+@class RTEGeocodeResultViewController;
+
+@protocol RTEGeocodeResultViewControllerDelegate <NSObject>
+
+- (void)geocodeResultViewControllerDidSelectDirectionsOption:(RTEGeocodeResultViewController *)viewController;
+
+@end
 
 @interface RTEGeocodeResultViewController : UITableViewController
 
 - (instancetype)initWithGeocodeResult:(RTEGeocodeResult *)result;
 
 @property (nonatomic,readonly) RTEGeocodeResult *result;
+
+@property (nonatomic,weak) id<RTEGeocodeResultViewControllerDelegate> delegate;
 
 @end
