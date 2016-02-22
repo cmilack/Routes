@@ -21,6 +21,4 @@
 
 @property (nonatomic,readonly) MGLPolyline *geometry;
 
-
-
 @end

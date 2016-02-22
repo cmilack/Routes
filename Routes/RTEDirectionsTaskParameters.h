@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "RTEEnumerations.h"
 #import "RTEQueryItemProvider.h"
+#import "RTECoordinateCollection.h"
 
 typedef enum : NSUInteger {
     RTEDirectionsInstructionText,
@@ -16,6 +17,8 @@ typedef enum : NSUInteger {
 } RTEDirectionsInstruction;
 
 @interface RTEDirectionsTaskParameters : NSObject <RTEQueryItemProvider>
+
+@property (nonatomic,readonly) RTECoordinateCollection *waypoints;
 
 // Defaults to RTECountryCodeAll
 //

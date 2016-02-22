@@ -8,19 +8,13 @@
 
 #import "RTEDistanceTaskParameters.h"
 
-@interface RTEDistanceTaskParameters()
-
-@property (nonatomic) NSMutableArray *stops;
-
-@end
-
 @implementation RTEDistanceTaskParameters
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        _stops = [NSMutableArray array];
+        _coordinates = [[RTECoordinateCollection alloc] init];
     }
     return self;
 }
@@ -31,46 +25,10 @@
     
     // Add points to the array
     //
-    [params addPoint:start];
-    [params addPoint:end];
+    [params.coordinates addPoint:start];
+    [params.coordinates addPoint:end];
 
     return params;
-}
-
-- (CLLocationCoordinate2D)pointAtIndex:(NSUInteger)index
-{
-    CLLocationCoordinate2D coordinate;
-    NSValue *value = [self.stops objectAtIndex:index];
-    [value getValue:&coordinate];
-    
-    return coordinate;
-}
-
-- (void)addPoint:(CLLocationCoordinate2D)point
-{
-    NSValue *startValue = [NSValue valueWithBytes:&point objCType:@encode(CLLocationCoordinate2D)];
-    [self.stops addObject:startValue];
-}
-
-- (void)insertPoint:(CLLocationCoordinate2D)point atIndex:(NSUInteger)index
-{
-    NSValue *startValue = [NSValue valueWithBytes:&point objCType:@encode(CLLocationCoordinate2D)];
-    [self.stops insertObject:startValue atIndex:index];
-}
-
-- (void)removePointAtIndex:(NSUInteger)index
-{
-    [self.stops removeObjectAtIndex:index];
-}
-
-- (void)removeAllPoints
-{
-    [self.stops removeAllObjects];
-}
-
-- (NSUInteger)numberOfPoints
-{
-    return self.stops.count;
 }
 
 @end

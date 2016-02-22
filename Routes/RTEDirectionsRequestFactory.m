@@ -10,6 +10,7 @@
 #import "RTEDirectionsTaskParameters.h"
 #import "RTEEnumerations.h"
 #import "MGLAccountManager+RTEExtensions.h"
+#import "RTECoordinateCollection.h"
 
 @implementation RTEDirectionsRequestFactory
 
@@ -26,11 +27,9 @@
     if (securityItem) {
         [queryItems addObject:securityItem];
     }
-    
-    
-    
-    NSString *waypointsText = [self urlFormattedWaypoints];
+
     NSString *profile = RTEProfileAsString(params.profile);
+    NSString *waypointsText = [self urlFormattedWaypoints:params.waypoints];
     NSString *urlString = [NSString stringWithFormat:@"https://api.mapbox.com/v5/directions/%@/%@.json",profile, waypointsText];
     
     NSURLComponents *components = [NSURLComponents componentsWithString:urlString];
@@ -40,9 +39,15 @@
     return request;
 }
 
-+ (NSString *)urlFormattedWaypoints
++ (NSString *)urlFormattedWaypoints:(RTECoordinateCollection *)waypoints
 {
-    return nil;
+    NSMutableArray *coordinates = [NSMutableArray array];
+    for (NSInteger i= 0; i < waypoints.count; i++) {
+        
+        CLLocationCoordinate2D coordinate = [waypoints pointAtIndex:i];
+        [NSString stringWithFormat:@"%f,%f",coordinate.latitude, coordinate.longitude];
+    }
+    return [coordinates componentsJoinedByString:@";"];
 }
 
 @end

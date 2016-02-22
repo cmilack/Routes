@@ -10,6 +10,7 @@
 #import "RTEDirectionsTaskParameters.h"
 #import "RTEDirectionsResult.h"
 #import "MGLAccountManager+RTEExtensions.h"
+#import "RTEDirectionsRequestFactory.h"
 
 @implementation RTEDirectionsTask
 
@@ -50,14 +51,16 @@
             return;
         }
         
+        // Handle response
+        //
+        NSLog(@"jsonResult: %@", jsonResult);
     };
 
+    NSURLRequest *request = [RTEDirectionsRequestFactory urlRequestWithParameters:params];
+    task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:serviceCompletion];
+    [task resume];
+    
     return task;
-}
-
-- (NSString *)stringFromWaypoints
-{
-    return nil;
 }
 
 @end

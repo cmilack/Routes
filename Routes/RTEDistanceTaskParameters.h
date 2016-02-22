@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "RTEEnumerations.h"
+#import "RTECoordinateCollection.h"
 
 @interface RTEDistanceTaskParameters : NSObject
 
@@ -17,19 +18,7 @@
 //
 + (instancetype)paramsWithStart:(CLLocationCoordinate2D)start end:(CLLocationCoordinate2D)end;
 
-// Input point API
-//
-- (CLLocationCoordinate2D)pointAtIndex:(NSUInteger)index;
-
-- (void)addPoint:(CLLocationCoordinate2D)point;
-
-- (void)insertPoint:(CLLocationCoordinate2D)point atIndex:(NSUInteger)index;
-
-- (void)removePointAtIndex:(NSUInteger)index;
-
-- (void)removeAllPoints;
-
-- (NSUInteger)numberOfPoints;
+@property (nonatomic,readonly) RTECoordinateCollection *coordinates;
 
 @property (nonatomic) RTEProfile profile;
 

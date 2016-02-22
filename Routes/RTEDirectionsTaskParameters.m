@@ -10,6 +10,15 @@
 
 @implementation RTEDirectionsTaskParameters
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _waypoints = [[RTECoordinateCollection alloc] init];
+    }
+    return self;
+}
+
 - (NSArray *)queryItems
 {
     NSAssert(NO, @"Not yet implemented");

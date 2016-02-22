@@ -28,6 +28,7 @@
 		178B040D1C7A7FFF00ED1986 /* RTEDirectionsRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B040C1C7A7FFF00ED1986 /* RTEDirectionsRequestFactory.m */; };
 		178B04101C7A831600ED1986 /* RTEDistanceRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B040F1C7A831600ED1986 /* RTEDistanceRequestFactory.m */; };
 		178B04181C7A87F300ED1986 /* RTEEnumerations.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B04171C7A87F300ED1986 /* RTEEnumerations.m */; };
+		178B041C1C7A939300ED1986 /* RTECoordinateCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 178B041B1C7A939300ED1986 /* RTECoordinateCollection.m */; };
 		17D685481C754F9000207661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D685471C754F9000207661 /* main.m */; };
 		17D6854B1C754F9000207661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6854A1C754F9000207661 /* AppDelegate.m */; };
 		17D685531C754F9000207661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D685521C754F9000207661 /* Assets.xcassets */; };
@@ -79,6 +80,8 @@
 		178B040F1C7A831600ED1986 /* RTEDistanceRequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEDistanceRequestFactory.m; sourceTree = "<group>"; };
 		178B04161C7A87F300ED1986 /* RTEEnumerations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTEEnumerations.h; sourceTree = "<group>"; };
 		178B04171C7A87F300ED1986 /* RTEEnumerations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTEEnumerations.m; sourceTree = "<group>"; };
+		178B041A1C7A939300ED1986 /* RTECoordinateCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTECoordinateCollection.h; sourceTree = "<group>"; };
+		178B041B1C7A939300ED1986 /* RTECoordinateCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTECoordinateCollection.m; sourceTree = "<group>"; };
 		17D685431C754F8F00207661 /* Routes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Routes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D685471C754F9000207661 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		17D685491C754F9000207661 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 				178B04161C7A87F300ED1986 /* RTEEnumerations.h */,
 				178B04171C7A87F300ED1986 /* RTEEnumerations.m */,
 				17460FE51C76719100CD159C /* RTEQueryItemProvider.h */,
+				178B04191C7A937F00ED1986 /* Model */,
 				17460FFC1C77F0ED00CD159C /* Distance */,
 				17460FFB1C77F0DA00CD159C /* Geocode */,
 				178B03F71C7A0E2700ED1986 /* Directions */,
@@ -175,10 +179,10 @@
 			children = (
 				178B03F81C7A107D00ED1986 /* RTEDirectionsTask.h */,
 				178B03F91C7A107D00ED1986 /* RTEDirectionsTask.m */,
-				178B03FE1C7A10B400ED1986 /* RTEDirectionsTaskParameters.h */,
-				178B03FF1C7A10B400ED1986 /* RTEDirectionsTaskParameters.m */,
 				178B040B1C7A7FFF00ED1986 /* RTEDirectionsRequestFactory.h */,
 				178B040C1C7A7FFF00ED1986 /* RTEDirectionsRequestFactory.m */,
+				178B03FE1C7A10B400ED1986 /* RTEDirectionsTaskParameters.h */,
+				178B03FF1C7A10B400ED1986 /* RTEDirectionsTaskParameters.m */,
 				178B03FB1C7A108F00ED1986 /* RTEDirectionsResult.h */,
 				178B03FC1C7A108F00ED1986 /* RTEDirectionsResult.m */,
 				178B04021C7A17E600ED1986 /* RTERoute.h */,
@@ -187,6 +191,15 @@
 				178B04061C7A193700ED1986 /* RTERouteStep.m */,
 			);
 			name = Directions;
+			sourceTree = "<group>";
+		};
+		178B04191C7A937F00ED1986 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				178B041A1C7A939300ED1986 /* RTECoordinateCollection.h */,
+				178B041B1C7A939300ED1986 /* RTECoordinateCollection.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		17D6853A1C754F8F00207661 = {
@@ -374,6 +387,7 @@
 				17460FF41C77CA2F00CD159C /* RTEDistanceTask.m in Sources */,
 				17265C8A1C7554E700F2C9A3 /* RTEMapViewController.m in Sources */,
 				17460FFA1C77EF8C00CD159C /* RTEDistanceResult.m in Sources */,
+				178B041C1C7A939300ED1986 /* RTECoordinateCollection.m in Sources */,
 				17460FF11C76BDA900CD159C /* RTEGeocodeResult.m in Sources */,
 				17460FF71C77CA5D00CD159C /* RTEDistanceTaskParameters.m in Sources */,
 				178B04101C7A831600ED1986 /* RTEDistanceRequestFactory.m in Sources */,

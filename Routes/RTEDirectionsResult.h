@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <Mapbox/Mapbox.h>
+#import "RTECoordinateCollection.h"
 
 @interface RTEDirectionsResult : NSObject
 
+// Origin and destination positions
+//
 @property (nonatomic,readonly) CLLocationCoordinate2D origin;
 @property (nonatomic,readonly) CLLocationCoordinate2D destination;
 
-// We expose the count and wayPointAtIndex: to provide a means
-// to access the way points. Since we can't have an array of
-// CLLocationCoorindate2D, this is the cleaneast option for an API
+// The input coordinates used to generate the route
 //
-@property (nonatomic,readonly) NSUInteger wayPointCount;
-- (CLLocationCoordinate2D)wayPointAtIndex:(NSUInteger)index;
+@property (nonatomic,readonly) RTECoordinateCollection *waypoints;
 
 // A collection of RTERoute objects
 //
