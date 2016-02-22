@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "RTEQueryItemProvider.h"
-#import "RTEMapBoxEnumerations.h"
+#import "RTEEnumerations.h"
 
 @protocol RTEQueryItemProvider;
 

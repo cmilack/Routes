@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RTEMapBoxEnumerations.h"
+#import "RTEEnumerations.h"
+#import "RTEQueryItemProvider.h"
 
 typedef enum : NSUInteger {
     RTEDirectionsInstructionText,
     RTEDirectionsInstructionHTML
 } RTEDirectionsInstruction;
 
-@interface RTEDirectionsTaskParameters : NSObject
+@interface RTEDirectionsTaskParameters : NSObject <RTEQueryItemProvider>
 
 // Defaults to RTECountryCodeAll
 //

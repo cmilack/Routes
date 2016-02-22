@@ -8,8 +8,8 @@
 
 #import "RTEGeocodeTask.h"
 #import "RTEGeocodeTaskParameters.h"
-#import "RTEMapboxClientHelper.h"
 #import "RTEGeocodeResult.h"
+#import "MGLAccountManager+RTEExtensions.h"
 
 @implementation RTEGeocodeTask
 
@@ -74,7 +74,7 @@
     
     NSMutableArray *queryItems = [NSMutableArray array];
     
-    NSURLQueryItem *securityItem = [RTEMapboxClientHelper clientAccessQueryItem];
+    NSURLQueryItem *securityItem = [MGLAccountManager rte_clientAccessQueryItem];
     if (securityItem) {
         [queryItems addObject:securityItem];
     }

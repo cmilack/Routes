@@ -8,12 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
-typedef enum : NSUInteger {
-    RTEDistanceTaskProfileDriving,
-    RTEDistanceTaskProfileWalking,
-    RTEDistanceTaskProfileCycling,
-} RTEDistanceTaskProfile;
+#import "RTEEnumerations.h"
 
 @interface RTEDistanceTaskParameters : NSObject
 
@@ -36,6 +31,6 @@ typedef enum : NSUInteger {
 
 - (NSUInteger)numberOfPoints;
 
-@property (nonatomic) RTEDistanceTaskProfile profile;
+@property (nonatomic) RTEProfile profile;
 
 @end

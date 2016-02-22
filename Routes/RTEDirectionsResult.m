@@ -10,4 +10,10 @@
 
 @implementation RTEDirectionsResult
 
+- (CLLocationCoordinate2D)wayPointAtIndex:(NSUInteger)index
+{
+    NSAssert(NO, @"Not yet implemented");
+    return CLLocationCoordinate2DMake(0, 0);
+}
+
 @end

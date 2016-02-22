@@ -7,24 +7,12 @@
 //
 
 #import "RTEDistanceTask.h"
-#import "RTEMapboxClientHelper.h"
 #import "RTEDistanceTaskParameters.h"
+#import "MGLAccountManager+RTEExtensions.h"
+#import "RTEEnumerations.h"
+#import "RTEDistanceRequestFactory.h"
 
 @implementation RTEDistanceTask
-
-- (NSString *)profileNameFromProfile:(RTEDistanceTaskProfile)profile
-{
-    switch (profile) {
-        case RTEDistanceTaskProfileDriving:
-            return @"driving";
-        case RTEDistanceTaskProfileCycling:
-            return @"cycling";
-        case RTEDistanceTaskProfileWalking:
-            return @"walking";
-        default:
-            return nil;
-    }
-}
 
 - (NSURLSessionTask *)executeWithParameters:(RTEDistanceTaskParameters *)params
                                  completion:(void(^)(NSURLSessionTask *task, RTEDistanceResult *result, NSError *error))completion
@@ -65,37 +53,7 @@
         });
     };
     
-    NSString *profile = [self profileNameFromProfile:params.profile];
-    NSString *urlString = [NSString stringWithFormat:@"https://api.mapbox.com/distances/v1/mapbox/%@",profile];
-    
-    NSURLComponents *components = [NSURLComponents componentsWithString:urlString];
-    components.queryItems = @[[RTEMapboxClientHelper clientAccessQueryItem]];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:components.URL
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setHTTPMethod:@"POST"];
-    
-    NSError *error;
-    NSData *postData = [self requestDataFromParams:params error:&error];
-    
-    if (error) {
-
-        // If we error out trying to get json we still need to fire the completion block
-        //
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            completion(nil, nil, error);
-        });
-        
-        return nil;
-    }
-    
-    [request setHTTPBody:postData];
-    
+    NSURLRequest *request = [RTEDistanceRequestFactory urlRequestWithParameters:params];
     task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:serviceCompletion];
     [task resume];
     

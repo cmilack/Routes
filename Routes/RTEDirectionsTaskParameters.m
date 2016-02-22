@@ -10,4 +10,10 @@
 
 @implementation RTEDirectionsTaskParameters
 
+- (NSArray *)queryItems
+{
+    NSAssert(NO, @"Not yet implemented");
+    return nil;
+}
+
 @end

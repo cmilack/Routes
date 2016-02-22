@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class RTEDirectionsResult;
 @class RTEDirectionsTaskParameters;
 
-typedef void(^RTEDirectionsTaskCompletionBlock)(NSURLSessionTask *task, id result , NSError *error);
+typedef void(^RTEDirectionsTaskCompletionBlock)(NSURLSessionTask *task, RTEDirectionsResult *result , NSError *error);
 
 @interface RTEDirectionsTask : NSObject
 
