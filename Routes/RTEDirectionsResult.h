@@ -12,6 +12,8 @@
 
 @interface RTEDirectionsResult : NSObject
 
+- (instancetype)initWithJson:(NSDictionary *)json;
+
 // Origin and destination positions
 //
 @property (nonatomic,readonly) CLLocationCoordinate2D origin;

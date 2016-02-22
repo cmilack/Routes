@@ -15,6 +15,8 @@
 //
 @interface RTERouteStep : NSObject
 
+- (instancetype)initWithJson:(NSDictionary *)json;
+
 // Step distance in meters
 //
 @property (nonatomic,readonly) NSUInteger distance;
@@ -22,6 +24,10 @@
 // Step duration in seconds
 //
 @property (nonatomic,readonly) NSUInteger duration;
+
+// The mode of travel - ex. driving
+//
+@property (nonatomic,readonly) NSString *mode;
 
 // The name of the way along which travel proceeds
 //
@@ -39,16 +45,18 @@
 //
 @property (nonatomic,readonly) double heading;
 
-// Might be better as an enum...
+#warning Add Maneuver support
+
+//// Might be better as an enum...
+////
+//@property (nonatomic,readonly) NSString *manuever;
 //
-@property (nonatomic,readonly) NSString *manuever;
-
-@property (nonatomic,readonly) CLLocationCoordinate2D maneuverLocation;
-
-@property (nonatomic,readonly) CLLocationCoordinate2D maneuverInstruction;
-
-// Might be better as an enum...
+//@property (nonatomic,readonly) CLLocationCoordinate2D maneuverLocation;
 //
-@property (nonatomic,readonly) NSString *manueverMode;
+//@property (nonatomic,readonly) CLLocationCoordinate2D maneuverInstruction;
+//
+//// Might be better as an enum...
+////
+//@property (nonatomic,readonly) NSString *manueverMode;
 
 @end

@@ -16,6 +16,8 @@
 #import "RTEGeocodeResultViewController.h"
 #import "RTEDirectionsTask.h"
 #import "RTEDirectionsTaskParameters.h"
+#import "RTEDirectionsResult.h"
+#import "RTERoute.h"
 
 #import "UINavigationController+RTEExtensions.h"
 #import "UIView+RTEAutolayout.h"
@@ -266,6 +268,11 @@ RTESearchResultViewControllerDelegate,RTEGeocodeResultViewControllerDelegate>
     }
 }
 
+- (UIColor *)mapView:(MGLMapView *)mapView strokeColorForShapeAnnotation:(MGLShape *)annotation
+{
+    return [UIColor redColor];
+}
+
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -365,7 +372,15 @@ RTESearchResultViewControllerDelegate,RTEGeocodeResultViewControllerDelegate>
     __block RTEDirectionsTask *task = [[RTEDirectionsTask alloc] init];
     [task executeWithParams:params completion:^(NSURLSessionTask *task, RTEDirectionsResult *result, NSError *error) {
         
-        NSLog(@"result");
+        RTERoute *route = result.routes.firstObject;
+        [self.mapView addAnnotation:route.geometry];
+        
+        [self.mapView showAnnotations:@[route.geometry]
+                          edgePadding:UIEdgeInsetsMake(80, 50, 80, 50)
+                             animated:YES];
+        
+        // Nil out the task to release
+        //
         task = nil;
     }];
     

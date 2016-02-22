@@ -45,9 +45,12 @@
             return;
         }
         
-        // Handle response
-        //
-        NSLog(@"jsonResult: %@", jsonResult);
+        RTEDirectionsResult *result = [[RTEDirectionsResult alloc] initWithJson:jsonResult];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            completion(task, result, nil);
+        });
     };
 
     NSURLRequest *request = [RTEDirectionsRequestFactory urlRequestWithParameters:params];
